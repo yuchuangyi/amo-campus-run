@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+session.json
+session.json.bak
+*.mitm
+*.png
+*.apk
+.apk879/
+*.log
