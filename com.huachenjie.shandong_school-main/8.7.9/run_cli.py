@@ -499,10 +499,14 @@ def main() -> int:
     # 围栏编号：没指定就自动取账号所在学校的第一个围栏
     if not args.fence_code:
         try:
-            fences = client.query_school_fences().get("data") or []
+            resp = client.query_school_fences()
+            fences = resp.get("data") or []
             if fences:
                 args.fence_code = fences[0].get("fenceCode") or ""
                 log_status("围栏", ok=True, status_text=f"{fences[0].get('fenceName')} ({args.fence_code})")
+            else:
+                log_status("围栏", ok=False,
+                           status_text=f"code={resp.get('code')} msg={resp.get('message')} school={client.school_code!r}")
         except Exception as exc:
             log_error(f"自动获取围栏失败: {exc}")
 

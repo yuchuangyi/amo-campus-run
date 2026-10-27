@@ -63,6 +63,9 @@ class HttpTransport:
                 self.adb_path = r"D:\Work\Tools\Androidindb.cmd"
 
         self.session = requests.Session()
+        # 不读取系统环境里的 HTTP(S)_PROXY：Clash 之类关闭时会变成连接被拒，
+        # 导致所有请求失败。代理只通过 --proxy 显式指定。
+        self.session.trust_env = False
         if self.proxy and self.transport_mode == "proxy":
             self.session.proxies = {
                 "http": self.proxy,
