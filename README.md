@@ -180,15 +180,14 @@ Protocol Flow
 cd src/8.7.7                                  # 进对应客户端版本目录
 pip install -r requirements.txt               # 装依赖（pycryptodome + requests）
 
-python login_cli.py -u 手机号 -p 密码          # 登录，凭证写入 session.json
-python policy_cli.py                          # 查本校跑步规则与电子围栏
+python login_cli.py -u 手机号 -p 密码          # 登录，只需一次
+python policy_cli.py                          # 看本校规则、围栏坐标、人脸认证状态
 
-# 先干跑，不联网，检查轨迹数据是否合理
-python run_cli.py --dry-run -d 2000 -p 360 --lat 36.65 --lng 117.12 --dump traj.json
-
-# 确认无误再正式跑
-python run_cli.py -d 2000 -p 360 --lat 36.65 --lng 117.12 --verify
+python run_cli.py --dry-run -d 2000 -p 360 --dump traj.json   # 试算，不联网
+python run_cli.py -d 2000 -p 360 --verify                     # 正式跑
 ```
+
+> **坐标不用自己填** —— 不指定 `--lat / --lng` 时，程序会自动从学校围栏接口取打卡点，并用第一个点作为起跑位置。需要手动指定时见 [USAGE.md](docs/USAGE.md#坐标不用自己找)。
 
 各版本协议实现相互独立，**请勿混合使用**；`session.json` 不跨版本共享。
 
