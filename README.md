@@ -45,22 +45,24 @@ Python Protocol Implementation
 ## 项目结构
 
 ```text
-com.huachenjie.shandong_school/
+amo-campus-run/
 │
-├── 8.7.2/
-│   └── 闪动校园 8.7.2 协议实现
+├── src/
+│   ├── 8.7.2/   协议实现
+│   ├── 8.7.4/   协议实现
+│   ├── 8.7.7/   协议实现
+│   └── 8.7.9/   协议实现（加壳版，待真机验证）
 │
-├── 8.7.4/
-│   └── 闪动校园 8.7.4 协议实现
+├── docs/
+│   ├── reverse-analysis-8.7.7.md   逆向分析报告
+│   ├── reverse-analysis-8.7.9.md   静态逆向报告
+│   ├── detection-rules-8.7.7.md    伪造痕迹检测规则
+│   ├── detection-test-plan.md      检测判定测试方案
+│   └── detection-results-8.7.9.md  实跑检测结论
 │
-├── 8.7.7/
-│   └── 闪动校园 8.7.7 协议实现
-│
-├── 8.7.9/
-│   └── 闪动校园 8.7.9 协议实现（加壳版，待真机验证）
-│
-├── LICENSE
-└── README.md
+├── .tools/      设备调试脚本（adb / 登录探测 / 单次运行）
+├── README.md
+└── .gitignore
 ```
 
 不同客户端版本可能存在：
@@ -174,7 +176,7 @@ Protocol Flow
 使用前请进入对应版本目录：
 
 ```bash
-cd 8.7.7
+cd src/8.7.7
 ```
 
 具体运行方式、依赖及参数说明以对应版本目录中的代码为准。
@@ -205,48 +207,11 @@ python risk_probe.py --lat 36.65 --lng 117.12 -d 800 -p 420 --clean
 ```
 
 常用参数：`--shape track|loop|grid|waypoints`、`--fence CODE,LAT,LNG`、`--seed`（固定可复现）、
-`--chunk-seconds` / `--chunk-delay`（上传节奏）。判定口径见根目录 `检测判定测试方案.md`。
+`--chunk-seconds` / `--chunk-delay`（上传节奏）。判定口径见根目录 `docs/detection-test-plan.md`。
 
----
-
-# 赞赏与感谢
-
-感谢所有关注、使用、测试及反馈本项目的朋友。
-
-特别感谢：
-
-| 赞赏者 | 致谢 |
-| :---: | :--- |
-| **VXiok** | 感谢对本项目的赞赏与支持 |
-
-也感谢所有提交 Issue、Pull Request、测试反馈及参与技术交流的朋友。
-
----
-
-# Credits
-
-## JustTrustMePro
-
-```text
-hang666 / JustTrustMePro
-```
-
-感谢原作者开源的优秀工具。
-
-本项目在 Android 动态调试及 HTTPS Certificate Pinning 分析过程中，曾参考或使用相关工具辅助研究。
-
-相关版权及源代码归原作者所有。
-
-本仓库不包含其源代码。
 
 ---
 
 # License
 
-本项目许可证详见：
-
-```text
-LICENSE
-```
-
-具体许可条款以仓库中的 LICENSE 文件为准。
+本项目未附加开源许可证，默认保留所有权利，仅供个人技术研究与学习交流使用。
