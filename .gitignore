@@ -6,4 +6,5 @@ session.json.bak
 *.png
 *.apk
 .apk879/
+.apk-pull/
 *.log

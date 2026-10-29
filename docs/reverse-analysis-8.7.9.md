@@ -153,8 +153,8 @@ BUILD_VERSION = "26101910"   # = versionCode
 默认从 npmjs 安装，本机直连会 `ECONNRESET`，换 npmmirror 可用：
 
 ```bat
-set JAVA_HOME=D:\downloads\com.huachenjie.shandong_school-main\.tools\jdk-21.0.12.1+1
-set REA_JADX_MCP_JAR=D:\downloads\com.huachenjie.shandong_school-main\.tools\jadx-headless-mcp-0.7.1-all.jar
+set JAVA_HOME=<JDK 21 安装路径>
+set REA_JADX_MCP_JAR=<jadx-headless-mcp-<version>-all.jar 路径>
 npx -y --registry=https://registry.npmmirror.com rea-agents@6.7.0 doctor
 ```
 

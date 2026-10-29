@@ -11,7 +11,7 @@ param(
     [string]$Adb = "",
     [string]$Package = "com.huachenjie.shandong_school",
     [switch]$Pull,
-    [string]$OutDir = "D:\downloads\com.huachenjie.shandong_school-main\.apk879"
+    [string]$OutDir = (Join-Path $PSScriptRoot "..\.apk-pull")
 )
 
 $ErrorActionPreference = "Continue"

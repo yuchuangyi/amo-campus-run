@@ -54,6 +54,7 @@ amo-campus-run/
 │   └── 8.7.9/   协议实现（加壳版，待真机验证）
 │
 ├── docs/
+│   ├── USAGE.md                    完整使用说明（从这里开始）
 │   ├── reverse-analysis-8.7.7.md   逆向分析报告
 │   ├── reverse-analysis-8.7.9.md   静态逆向报告
 │   ├── detection-rules-8.7.7.md    伪造痕迹检测规则
@@ -171,17 +172,25 @@ Protocol Flow
 
 ## 使用说明
 
-各版本协议实现均尽量保持独立。
+**完整文档见 [docs/USAGE.md](docs/USAGE.md)**，包含环境准备、登录流程、三种传输模式、全部查询工具、跑步完整链路、参数逐一说明、判定探针与常见问题。
 
-使用前请进入对应版本目录：
+### 快速开始
 
 ```bash
-cd src/8.7.7
+cd src/8.7.7                                  # 进对应客户端版本目录
+pip install -r requirements.txt               # 装依赖（pycryptodome + requests）
+
+python login_cli.py -u 手机号 -p 密码          # 登录，凭证写入 session.json
+python policy_cli.py                          # 查本校跑步规则与电子围栏
+
+# 先干跑，不联网，检查轨迹数据是否合理
+python run_cli.py --dry-run -d 2000 -p 360 --lat 36.65 --lng 117.12 --dump traj.json
+
+# 确认无误再正式跑
+python run_cli.py -d 2000 -p 360 --lat 36.65 --lng 117.12 --verify
 ```
 
-具体运行方式、依赖及参数说明以对应版本目录中的代码为准。
-
-请勿直接将不同版本的协议代码混合使用。
+各版本协议实现相互独立，**请勿混合使用**；`session.json` 不跨版本共享。
 
 ---
 

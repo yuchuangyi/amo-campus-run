@@ -2,7 +2,7 @@
 import sys, os, json
 from pathlib import Path
 
-cur_dir = r"D:/Work/闪动校园/协议/8.7.4"
+cur_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, cur_dir)
 
 from client import ShanDongClient

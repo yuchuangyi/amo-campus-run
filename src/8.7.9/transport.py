@@ -56,11 +56,9 @@ class HttpTransport:
 
         self.adb_path = adb_path or os.environ.get("ADB_PATH") or shutil.which("adb")
         if not self.adb_path:
-            sdk_adb = r"D:\Work\Tools\Android\Sdk\platform-toolsdb.exe"
-            if os.path.exists(sdk_adb):
-                self.adb_path = sdk_adb
-            else:
-                self.adb_path = r"D:\Work\Tools\Androidindb.cmd"
+            raise RuntimeError(
+                "未找到 adb：请安装 Android Platform Tools，或用 --adb-path / ADB_PATH 指定路径"
+            )
 
         self.session = requests.Session()
         # 不读取系统环境里的 HTTP(S)_PROXY：Clash 之类关闭时会变成连接被拒，
